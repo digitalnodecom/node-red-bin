@@ -1,6 +1,6 @@
 {
   "name": "node-red-bin",
-  "version": "4.1.4",
+  "version": "5.0.0-beta.2",
   "description": "Node-RED standalone binaries for all platforms",
   "bin": "src/index.js",
   "repository": {
@@ -16,7 +16,7 @@
     "build:win-x64": "pkg . --targets node22-win-x64 --output build/node-red-win-x64.exe"
   },
   "dependencies": {
-    "node-red": "^4.1.4",
+    "node-red": "5.0.0-beta.2",
     "commander": "^12.0.0",
     "express": "^4.18.2"
   },
