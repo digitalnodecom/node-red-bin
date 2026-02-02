@@ -247,7 +247,7 @@ If you see module errors, ensure you're using the correct binary for your platfo
 
 ## Version Information
 
-This binary packages Node-RED v3.1.15 with Node.js 24.
+This binary packages Node-RED v4.1.4 with Node.js 24.
 
 ## License
 
