@@ -1,0 +1,88 @@
+name: Build and Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-macos-x64:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run build:macos-x64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-red-macos-x64
+          path: build/node-red-macos-x64
+
+  build-macos-arm64:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run build:macos-arm64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-red-macos-arm64
+          path: build/node-red-macos-arm64
+
+  build-linux-x64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run build:linux-x64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-red-linux-x64
+          path: build/node-red-linux-x64
+
+  build-windows-x64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci
+      - run: npm run build:win-x64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: node-red-win-x64
+          path: build/node-red-win-x64.exe
+
+  release:
+    needs: [build-macos-x64, build-macos-arm64, build-linux-x64, build-windows-x64]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/node-red-macos-x64/node-red-macos-x64
+            artifacts/node-red-macos-arm64/node-red-macos-arm64
+            artifacts/node-red-linux-x64/node-red-linux-x64
+            artifacts/node-red-win-x64/node-red-win-x64.exe
+          draft: false
+          prerelease: false

@@ -1,0 +1,17 @@
+{
+  "uiPort": 7878,
+  "flowFile": "flows.json",
+  "credentialSecret": "my-secret-key",
+  "logging": {
+    "console": {
+      "level": "info",
+      "metrics": false,
+      "audit": false
+    }
+  },
+  "editorTheme": {
+    "projects": {
+      "enabled": false
+    }
+  }
+}
