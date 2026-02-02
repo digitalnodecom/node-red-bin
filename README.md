@@ -174,7 +174,7 @@ The user directory stores your flows, credentials, and installed nodes. Default 
 
 ### Prerequisites
 
-- Node.js 24.x or later
+- Node.js 22.x or later
 - npm
 
 ### Build Steps
@@ -247,7 +247,7 @@ If you see module errors, ensure you're using the correct binary for your platfo
 
 ## Version Information
 
-This binary packages Node-RED v4.1.4 with Node.js 24.
+This binary packages Node-RED v4.1.4 with Node.js 22.
 
 ## License
 
