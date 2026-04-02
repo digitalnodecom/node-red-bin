@@ -9,19 +9,21 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "build": "pkg . --output build/node-red",
-    "build:macos-x64": "pkg . --targets node22-macos-x64 --output build/node-red-macos-x64",
-    "build:macos-arm64": "pkg . --targets node22-macos-arm64 --output build/node-red-macos-arm64",
-    "build:linux-x64": "pkg . --targets node22-linux-x64 --output build/node-red-linux-x64",
-    "build:win-x64": "pkg . --targets node22-win-x64 --output build/node-red-win-x64.exe"
+    "prebuild": "node prebuild.js",
+    "build": "npm run prebuild && pkg . --output build/node-red",
+    "build:macos-x64": "npm run prebuild && pkg . --targets node22-macos-x64 --output build/node-red-macos-x64",
+    "build:macos-arm64": "npm run prebuild && pkg . --targets node22-macos-arm64 --output build/node-red-macos-arm64",
+    "build:linux-x64": "npm run prebuild && pkg . --targets node22-linux-x64 --output build/node-red-linux-x64",
+    "build:win-x64": "npm run prebuild && pkg . --targets node22-win-x64 --output build/node-red-win-x64.exe"
   },
   "dependencies": {
-    "node-red": "5.0.0-beta.4",
     "commander": "^12.0.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "node-red": "5.0.0-beta.4"
   },
   "devDependencies": {
-    "@yao-pkg/pkg": "^6.12.0"
+    "@yao-pkg/pkg": "^6.12.0",
+    "esbuild": "^0.28.0"
   },
   "pkg": {
     "scripts": "node_modules/node-red/**/*.js",
