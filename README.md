@@ -2,13 +2,6 @@
 
 Standalone executable binaries of Node-RED for multiple platforms. No Node.js installation required.
 
-## Projects
-
-This repository contains two projects:
-
-1. **Node-RED CLI Binaries** (this directory) - Standalone command-line binaries
-2. **[Node-RED Desktop](./node-red-desktop/)** - Cross-platform desktop application with GUI for managing multiple Node-RED instances
-
 ## Features
 
 - Standalone binaries for macOS, Linux, and Windows
@@ -281,4 +274,4 @@ This runs the source directly using Node.js.
 
 ## Credits
 
-Built with [pkg](https://github.com/vercel/pkg) for packaging Node.js applications as standalone executables.
+Built with [@yao-pkg/pkg](https://github.com/nicolo-ribaudo/pkg) for packaging Node.js applications as standalone executables.
